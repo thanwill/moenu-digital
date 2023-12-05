@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "outDir": "dist/js",
+        "target": "ES2017",
+        "noEmitOnError": true,
+        "moduleResolution": "node"
+    },
+    "include": ["app/**/*"]
+}
