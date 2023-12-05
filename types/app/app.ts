@@ -1,8 +1,20 @@
-import { Negociate } from "./model/negociate.js";
+import NegociateControler from "./controller/negociateController.js";
 
+const controller = new NegociateControler();
 
-var data = document.getElementById("data");
-var quantity = document.querySelector("#quantidade");
-var value = document.querySelector("#valor");
+const form = document.querySelector('form') as HTMLFormElement;
 
-var negociate = new Negociate(data, quantity, value);
+form.addEventListener('submit', event => {
+    event.preventDefault();
+    controller.adiciona();
+
+    form.reset();
+
+    controller.setToast();
+
+    setTimeout(() => {
+        controller.removeToast();
+    }, 3000);
+
+});
+
