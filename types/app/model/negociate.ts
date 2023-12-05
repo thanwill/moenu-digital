@@ -11,23 +11,23 @@ export class Negociate {
         this._value = value;
     }
 
-    get data() {
+    get data() : Date {
         return this._data;
     }
 
-    get quantity() {
+    get quantity() : number {
         return this._quantity;
     }
 
-    get value() {
+    get value() : number {
         return this._value;
     }
 
-    get volume() {
+    get volume(): number {
         return this._quantity * this._value;
     }
 
-    toString() {
+    toString()  : string{
         return `
             Data: ${this.data},
             Quantidade: ${this.quantity},

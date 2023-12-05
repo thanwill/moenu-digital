@@ -11,7 +11,7 @@ export default class NegociateControler {
         this.value = document.querySelector('#valor')
     }
 
-    adiciona() {
+    adiciona() : void {
         const negociacao = this.criarNegociacao()
         console.log(negociacao)
     }
@@ -27,7 +27,7 @@ export default class NegociateControler {
     }
 
     // remove a classe hide do elemento #liveToast e adiciona a classe show
-    setToast() {
+    setToast(): void{
         const toast = document.querySelector('#liveToast')
         toast.classList.remove('hide')
         toast.classList.add('show')
@@ -35,10 +35,12 @@ export default class NegociateControler {
     }
 
     // remove a classe show do elemento #liveToast e adiciona a classe hide
-    removeToast() {
+    removeToast() : void {
         const toast = document.querySelector('#liveToast')
         toast.classList.remove('show')
         toast.classList.add('hide')
     }
+
+
 
 }
