@@ -10,11 +10,9 @@ form.addEventListener('submit', event => {
 
     form.reset();
 
-    controller.setToast();
+    const data = document.querySelector('#data') as HTMLInputElement;
 
-    setTimeout(() => {
-        controller.removeToast();
-    }, 3000);
+    data.focus();
 
 });
 
