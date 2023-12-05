@@ -1,11 +1,11 @@
 export class Negociate {
 
     // private
-    private _data;
-    private _value; 
-    private _quantity;
+    private _data: Date;
+    private _value: number; 
+    private _quantity: number;
 
-    constructor(data, quantity, value) {
+    constructor(data:Date, quantity: number, value: number) {
         this._data = data;
         this._quantity = quantity;
         this._value = value;
