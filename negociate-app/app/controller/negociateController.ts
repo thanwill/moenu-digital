@@ -28,7 +28,7 @@ export default class NegociateControler {
     criarNegociacao(): Negociate {
         
         if (!this.valida()) {
-            this.setToast('Ops, algo deu errado!', 'Preencha todos os campos')
+            this.setToast('Erro!', 'Preencha todos os campos.')
             throw new Error('Preencha todos os campos')
         }
 
@@ -38,34 +38,42 @@ export default class NegociateControler {
             parseFloat(this.value.value)
         )
 
-        this.setToast('Sucesso!', 'Negociação adicionada com sucesso')
+        // salva no localstorage 
+        this.save(negociacao)
+
+        this.setToast('Sucesso!', 'Negociação adicionada com sucesso.')
 
         return negociacao
     }
 
+    list () : Negociate[] {
+        const negociacoes = localStorage.getItem('negociacoes')
+        return negociacoes ? JSON.parse(negociacoes) : []
+    }
+
+    save (negociacao: Negociate) : void {
+        const negociacoes = this.list()
+        negociacoes.push(negociacao)
+        localStorage.setItem('negociacoes', JSON.stringify(negociacoes))
+    }
 
     // remove a classe hide do elemento #liveToast e adiciona a classe show
     setToast(title:string, message : string): void{
-        const toast = document.querySelector('#liveToast')
-        toast.classList.remove('hide')
-        toast.classList.add('show')
+        const toast = document.querySelector('.toast')
+        this.actionToast('show', 'hide')
 
-        document.querySelector('.toast-header').innerHTML = title
+        document.querySelector('.me-auto').innerHTML = title
         document.querySelector('.toast-body').innerHTML = message
 
         setTimeout(() => {
-            this.removeToast()
+            this.actionToast('hide', 'show')
         }, 2000);
-        
     }
 
-    // remove a classe show do elemento #liveToast e adiciona a classe hide
-    removeToast() : void {
-        const toast = document.querySelector('#liveToast')
-        toast.classList.remove('show')
-        toast.classList.add('hide')
+    actionToast(add: string, remove: string) : void {
+        const toast = document.querySelector('.toast')
+        toast.classList.remove(remove)
+        toast.classList.add(add)
     }
-
-
 
 }

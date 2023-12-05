@@ -27,6 +27,7 @@ export class Negociate {
         return this._quantity * this._value;
     }
 
+
     toString()  : string{
         return `
             Data: ${this.data},

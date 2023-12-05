@@ -1,6 +1,6 @@
 import NegociateControler from "./controller/negociateController.js";
 const controller = new NegociateControler();
-const form = document.querySelector('form');
+const form = document.querySelector('.form');
 form.addEventListener('submit', event => {
     event.preventDefault();
     controller.adiciona();
