@@ -6,5 +6,3 @@ var quantity = document.querySelector("#quantidade");
 var value = document.querySelector("#valor");
 
 var negociate = new Negociate(data, quantity, value);
-
-console.log(negociate);
