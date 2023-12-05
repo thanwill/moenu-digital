@@ -1,0 +1,16 @@
+{
+  "name": "typescript-project",
+  "version": "1.0.0",
+  "description": "Estudo de typescript.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node build",
+    "server": "lite-server --baseDir=dist"
+  },
+  "author": "Jonathan Pereira",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^6.0.0",
+    "lite-server": "^2.6.1"
+  }
+}
