@@ -12,13 +12,18 @@ export default class NegociateControler {
     }
 
     adiciona() {
+        const negociacao = this.criarNegociacao()
+        console.log(negociacao)
+    }
+
+    criarNegociacao(): Negociate {
         const negociacao = new Negociate(
             new Date(this.data.value.replace(/-/g, ',')),
             parseInt(this.quantity.value),
             parseFloat(this.value.value)
         )
 
-        console.log(negociacao)
+        return negociacao
     }
 
     // remove a classe hide do elemento #liveToast e adiciona a classe show
