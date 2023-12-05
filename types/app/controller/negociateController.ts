@@ -1,9 +1,9 @@
 import { Negociate } from "../model/negociate.js";
 
 export default class NegociateControler {
-    private data;
-    private quantity;
-    private value;
+    private data: HTMLInputElement;
+    private quantity: HTMLInputElement;
+    private value : HTMLInputElement;
 
     constructor() {
         this.data = document.querySelector('#data')
