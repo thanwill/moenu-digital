@@ -1,31 +1,25 @@
 export class Negociate {
 
     constructor(
-        private _data: Date,
-        private _quantity: number,
-        private _value: number
+        private _date: Date,
+        public readonly quantity: number,
+        public readonly value: number
     ) {}
-    
-    get data() : Date {
-        return this._data;
-    }
-
-    get quantity() : number {
-        return this._quantity;
-    }
-
-    get value() : number {
-        return this._value;
-    }
 
     get volume(): number {
-        return this._quantity * this._value;
+        return this.quantity * this.value;
     }
 
+    get date(): Date {
+        // Programação defensiva
+        // retorna uma nova data para evitar que a data seja alterada
+        const date = new Date(this._date.getTime());
+        return date;
+    }
 
     toString()  : string{
         return `
-            Data: ${this.data},
+            Data: ${this._date},
             Quantidade: ${this.quantity},
             Valor: ${this.value},
             Volume: ${this.volume}

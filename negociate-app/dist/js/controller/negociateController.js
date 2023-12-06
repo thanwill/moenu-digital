@@ -23,7 +23,29 @@ export default class NegociateControler {
         // salva no localstorage 
         this.list.add(negociacao);
         this.exibeToast('Sucesso!', 'Negociação adicionada com sucesso.');
+        this.exibeNegociacoes();
         return negociacao;
+    }
+    // exibe os dados do localstorage através da div .registros
+    exibeNegociacoes() {
+        const tabela = document.querySelector('.registros');
+        tabela.innerHTML = '';
+        const lista = this.list.getLocalStorage();
+        lista.length == 0 ?
+            tabela.innerHTML = '<tr><td colspan="4">Nenhuma negociação cadastrada.</td></tr>' : null;
+        lista.forEach(negociacao => {
+            console.log(negociacao);
+            tabela.innerHTML += `
+                <tr>
+                    <td>
+                    ${negociacao.date.getDate()}/${negociacao.date.getMonth() + 1}/${negociacao.date.getFullYear()}
+                    </td>
+                    <td>${negociacao.quantity}</td>
+                    <td>${negociacao.value}</td>
+                    <td>${negociacao.volume}</td>
+                </tr>
+            `;
+        });
     }
     // remove a classe hide do elemento #liveToast e adiciona a classe show
     exibeToast(title, message) {

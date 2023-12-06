@@ -3,6 +3,10 @@ import NegociateControler from "./controller/negociateController.js";
 const controller = new NegociateControler();
 const form = document.querySelector('.form') as HTMLFormElement;
 
+
+
+controller.exibeNegociacoes();
+
 form.addEventListener('submit', event => {
     event.preventDefault();
     controller.criarNegociacao();

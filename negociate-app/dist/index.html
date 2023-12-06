@@ -10,7 +10,15 @@
 </head>
 
 <style>
-    
+    .toast {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin: 20px;
+        z-index: 9999;
+    }
+
+
 </style>
 
 <body>
@@ -21,7 +29,7 @@
                     Negociação
                 </h1>
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.
+                    Consulte suas negociações.
                 </p>
                 <form class="mt-5 form">
                     <div class="mb-3">
@@ -44,29 +52,43 @@
                     </div>
                     <button type="submit" class="btn mt-5 btn-primary">Submit</button>
                 </form>
-
-            </div>
-            <div class="col p-5" style="background-color: aliceblue;">
                 
+                <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                        <span class="rounded me-2"></span>
+                        <strong class="me-auto">Bootstrap</strong>
+                        <small>
+                            agora
+                        </small>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <div class="toast-body">
+                        Hello, world! This is a toast message.
+                    </div>
+                </div>
+            </div>
+            <div class="col p-5" style="background-color: aliceblue; border-radius: 20px;">
+
                 <div class="row">
                     <h1>
                         Registros
                     </h1>
-                    <div class="registros"></div>
-                </div>
-                <div class="row alert-toast">
-                    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-                        <div class="toast-header">
-                            <span class="rounded me-2"></span>
-                            <strong class="me-auto">Bootstrap</strong>
-                            <small>
-                                agora
-                            </small>
-                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                        </div>
-                        <div class="toast-body">
-                            Hello, world! This is a toast message.
-                        </div>
+                    <p>
+                        Acompanhe seus registros.
+                    </p>
+                    <div class="">
+                        <table class="table table-striped mt-3">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Data</th>
+                                    <th scope="col">Quantidade</th>
+                                    <th scope="col">Valor</th>
+                                    <th scope="col">Volume</th>
+                                </tr>
+                            </thead>
+                            <tbody class="registros">
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
