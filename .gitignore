@@ -8,7 +8,7 @@ lerna-debug.log*
 .pnpm-debug.log*
 
 # Vue CLI
-vue-project/*
+vue-project/node_modules/
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
@@ -130,3 +130,32 @@ dist/js/*
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Logs
+vue-project/logs
+vue-project/*.log
+vue-project/npm-debug.log*
+vue-project/yarn-debug.log*
+vue-project/yarn-error.log*
+vue-project/pnpm-debug.log*
+vue-project/lerna-debug.log*
+
+vue-project/node_modules
+vue-project/.DS_Store
+vue-project/dist
+vue-project/dist-ssr
+vue-project/coverage
+vue-project/*.local
+
+vue-project/cypress/videos/
+vue-project/cypress/screenshots/
+
+# Editor directories and files
+vue-project/.vscode/*
+vue-project/!.vscode/extensions.json
+vue-project/.idea
+vue-project/*.suo
+vue-project/*.ntvs*
+vue-project/*.njsproj
+vue-project/*.sln
+vue-project/*.sw?
