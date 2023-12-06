@@ -5,7 +5,7 @@ const form = document.querySelector('.form') as HTMLFormElement;
 
 form.addEventListener('submit', event => {
     event.preventDefault();
-    controller.adiciona();
+    controller.criarNegociacao();
 
     form.reset();
     const data = document.querySelector('#data') as HTMLInputElement;

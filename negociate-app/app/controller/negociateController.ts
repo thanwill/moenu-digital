@@ -1,9 +1,11 @@
 import { Negociate } from "../model/negociate.js";
+import { NegociateList } from "../model/negociateList.js";
 
 export default class NegociateControler {
     private data: HTMLInputElement;
     private quantity: HTMLInputElement;
     private value : HTMLInputElement;
+    private list = new NegociateList() 
 
     constructor() {
         this.data = document.querySelector('#data')
@@ -19,16 +21,10 @@ export default class NegociateControler {
         return true
     }
 
-
-    adiciona() : void {
-        const negociacao = this.criarNegociacao()
-        console.log(negociacao)
-    }
-
     criarNegociacao(): Negociate {
         
         if (!this.valida()) {
-            this.setToast('Erro!', 'Preencha todos os campos.')
+            this.exibeToast('Erro!', 'Preencha todos os campos.')
             throw new Error('Preencha todos os campos')
         }
 
@@ -39,26 +35,14 @@ export default class NegociateControler {
         )
 
         // salva no localstorage 
-        this.save(negociacao)
-
-        this.setToast('Sucesso!', 'Negociação adicionada com sucesso.')
+        this.list.add(negociacao)
+        this.exibeToast('Sucesso!', 'Negociação adicionada com sucesso.')
 
         return negociacao
     }
 
-    list () : Negociate[] {
-        const negociacoes = localStorage.getItem('negociacoes')
-        return negociacoes ? JSON.parse(negociacoes) : []
-    }
-
-    save (negociacao: Negociate) : void {
-        const negociacoes = this.list()
-        negociacoes.push(negociacao)
-        localStorage.setItem('negociacoes', JSON.stringify(negociacoes))
-    }
-
     // remove a classe hide do elemento #liveToast e adiciona a classe show
-    setToast(title:string, message : string): void{
+    exibeToast(title:string, message : string): void{
         const toast = document.querySelector('.toast')
         this.actionToast('show', 'hide')
 
