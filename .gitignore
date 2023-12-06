@@ -139,6 +139,8 @@ vue-project/yarn-debug.log*
 vue-project/yarn-error.log*
 vue-project/pnpm-debug.log*
 vue-project/lerna-debug.log*
+vue-project/.*
+vue-project/deps
 
 vue-project/node_modules
 vue-project/.DS_Store
