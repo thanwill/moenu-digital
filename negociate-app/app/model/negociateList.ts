@@ -14,20 +14,7 @@ export class NegociateList {
         localStorage.setItem('negociacoes', JSON.stringify(this.list))
     }
 
-    getLocalStorage(): Negociate[] {
-        const negociacoes = localStorage.getItem('negociacoes')
-        if (negociacoes) {
-            return JSON.parse(negociacoes).map((negociacao: any) => {
-                return new Negociate(
-                    new Date(negociacao._date), 
-                    negociacao.quantity, 
-                    negociacao.value
-                );
-            });
-        } else {
-            return [];
-        }
-    }
+    
 
     // retorna a lista
     getList () : readonly Negociate[] {

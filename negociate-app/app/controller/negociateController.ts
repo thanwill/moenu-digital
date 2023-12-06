@@ -41,12 +41,27 @@ export default class NegociateControler {
         return negociacao
     }
 
+    getLocalStorage(): Negociate[] {
+        const negociacoes = localStorage.getItem('negociacoes')
+        if (negociacoes) {
+            return JSON.parse(negociacoes).map((negociacao: any) => {
+                return new Negociate(
+                    new Date(negociacao._date), 
+                    negociacao.quantity, 
+                    negociacao.value
+                );
+            });
+        } else {
+            return [];
+        }
+    }
+
 
     // exibe os dados do localstorage através da div .registros
     exibeNegociacoes(): void{
         const tabela = document.querySelector('.registros')
         tabela.innerHTML = ''
-        const lista = this.list.getLocalStorage()
+        const lista = this.getLocalStorage()
 
         lista.length == 0 ?
         tabela.innerHTML = '<tr><td colspan="4">Nenhuma negociação cadastrada.</td></tr>':null
