@@ -1,32 +1,27 @@
-<script lang="ts">
+<script setup lang="ts">
+import { ref } from 'vue'
 import SelecionarIngredientes from './SelecionarIngredientes.vue'
 import Tag from '@/components/Tag.vue'
 import SuaLista from '@/components/SuaLista.vue'
 import BotaoPrincipal from '@/components/BotaoPrincipal.vue'
-import type { PropType } from 'vue'
-export default {
-    name: "ConteudoPrincipal",
-    components: { SelecionarIngredientes, Tag, SuaLista , BotaoPrincipal},
-    data() {
-        return {
-            ingredientes: [] as string[]
-        }
-    },
-    methods: {
-        adicionarIngrediente(ingrediente: string) {
-            this.ingredientes.push(ingrediente)
-        },
-        removerIngrediente(ingrediente: string) {
+import Rodape from '@/components/Rodape.vue'
 
-            // cria uma variável que recebe o índice do ingrediente que será removido 
-            const indice = this.ingredientes.indexOf(ingrediente)
+const ingredientes = ref([] as string[])
 
-            // remove o ingrediente do array 
-            this.ingredientes.splice(indice, 1)
-        }
-    },
-    emits: ['adicionarIngrediente', 'removerIngrediente']
+
+
+function adicionarIngrediente(ingrediente: string) {
+    ingredientes.value.push(ingrediente)
 }
+function removerIngrediente(ingrediente: string) {
+
+    // cria uma variável que recebe o índice do ingrediente que será removido 
+    const indice = ingredientes.value.indexOf(ingrediente)
+
+    // remove o ingrediente do array 
+    ingredientes.value.splice(indice, 1)
+}
+
 </script>
 
 <template>
@@ -34,7 +29,9 @@ export default {
         <SuaLista :ingredientes="ingredientes" />
         <SelecionarIngredientes @adicionar-ingrediente="adicionarIngrediente" @remover-ingrediente="removerIngrediente" />
         <BotaoPrincipal :message="'Buscar receitas!'" />
+
     </main>
+    <Rodape />
 </template>
 
 <style scoped>
