@@ -9,7 +9,8 @@ export default {
         categoria: {type: Object as PropType<ICategoria>, required: true} 
             // define o tipo de categoria que será importada, através da Interface criada para os objetos.
     },
-    components: { Tag , IngredienteSelecionado}
+    components: { Tag , IngredienteSelecionado},
+    emits: ['adicionarIngrediente']
 }
 </script>
 
@@ -21,7 +22,11 @@ export default {
         </header>
         <ul class="categoria__ingredientes">
             <li v-for="ingrediente in categoria.ingredientes" :key="ingrediente">
-                <IngredienteSelecionado :ingrediente="ingrediente"/>
+                <IngredienteSelecionado 
+                :ingrediente="ingrediente"
+                @adicionar-ingrediente="$emit('adicionarIngrediente', $event)"
+                
+                />
             </li>
         </ul>
     </article>
