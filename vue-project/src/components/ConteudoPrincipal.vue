@@ -1,5 +1,7 @@
 <script lang="ts">
+import SelecionarIngredientes from './SelecionarIngredientes.vue'
 export default{
+  components: { SelecionarIngredientes },
     name: "ConteudoPrincipal",
     data(){
         return {
@@ -28,6 +30,7 @@ export default{
             </p>
 
         </section>
+        <selecionar-ingredientes/>
     </main>
 </template>
 
