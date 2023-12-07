@@ -1,37 +1,38 @@
 <script lang="ts">
 import SelecionarIngredientes from './SelecionarIngredientes.vue'
-export default{
-  components: { SelecionarIngredientes },
-    name: "ConteudoPrincipal",
-    data(){
-        return {
-            ingredientes : ['Alho','Manteiga','Sal','Pimenta']
-        }
+import Tag from '@/components/Tag.vue'
+export default {
+  components: { SelecionarIngredientes, Tag },
+  name: "ConteudoPrincipal",
+  data() {
+    return {
+      ingredientes: ['Alho', 'Manteiga', 'Sal', 'Pimenta']
     }
+  }
 }
 
 </script>
 
 <template>
-    <main class="conteudo-principal">
-        <section>
-            <span class="subtitulo-lg sua-lista-texto">
-                Sua lista:
-            </span>
-            <ul v-if="ingredientes.length != 0" class="ingredientes-sua-lista">
-                <li v-for="ingrediente in ingredientes" :key="ingrediente" class="ingrediente">
-                    {{ ingrediente }}
-                </li>
-            </ul>
+  <main class="conteudo-principal">
+    <section>
+      <span class="subtitulo-lg sua-lista-texto">
+        Sua lista:
+      </span>
+      <ul v-if="ingredientes.length != 0" class="ingredientes-sua-lista">
+        <li v-for="ingrediente in ingredientes" :key="ingrediente">
+          <Tag :texto="ingrediente" />
+        </li>
+      </ul>
 
-            <p v-else class="paragrafo lista-vazia">
-                <img src="../assets/images/icones/lista-vazia.svg" alt="Ícone de pesquisa">
-                Sua lista ainda está vazia, selecione alguns ingredientes para iniciar.
-            </p>
+      <p v-else class="paragrafo lista-vazia">
+        <img src="../assets/images/icones/lista-vazia.svg" alt="Ícone de pesquisa">
+        Sua lista ainda está vazia, selecione alguns ingredientes para iniciar.
+      </p>
 
-        </section>
-        <selecionar-ingredientes/>
-    </main>
+    </section>
+    <selecionar-ingredientes />
+  </main>
 </template>
 
 <style scoped>
@@ -61,17 +62,7 @@ export default{
   flex-wrap: wrap;
 }
 
-.ingrediente {
-  display: inline-block;
-  border-radius: 0.5rem;
-  min-width: 4.25rem;
-  padding: 0.5rem;
-  text-align: center;
-    transition: 0.2s;
-    color: var(--creme, #FFFAF3);
-  background: var(--coral, #F0633C);
-  font-weight: 700;
-}
+
 
 .lista-vazia {
   display: flex;
@@ -97,5 +88,4 @@ export default{
     gap: 4rem;
   }
 }
-
 </style>

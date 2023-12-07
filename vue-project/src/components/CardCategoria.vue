@@ -1,13 +1,15 @@
 <script lang="ts">
 import type ICategoria from '@/interface/ICategoria';
 import type { PropType } from 'vue';
+import Tag from '@/components/Tag.vue'
 
 export default {
     name:"CardCategoria",
     props: {
         categoria: {type: Object as PropType<ICategoria>, required: true} 
             // define o tipo de categoria que será importada, através da Interface criada para os objetos.
-    }
+    },
+    components: { Tag }
 }
 </script>
 
@@ -19,7 +21,7 @@ export default {
         </header>
         <ul class="categoria__ingredientes">
             <li v-for="ingrediente in categoria.ingredientes" :key="ingrediente">
-                {{ ingrediente }}
+                <Tag :texto="ingrediente"/>
             </li>
         </ul>
     </article>
