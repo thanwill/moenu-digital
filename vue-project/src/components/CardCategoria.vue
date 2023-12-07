@@ -2,14 +2,14 @@
 import type ICategoria from '@/interface/ICategoria';
 import type { PropType } from 'vue';
 import Tag from '@/components/Tag.vue'
-
+import IngredienteSelecionado from '@/components/IngredienteSelecionado.vue'
 export default {
     name:"CardCategoria",
     props: {
         categoria: {type: Object as PropType<ICategoria>, required: true} 
             // define o tipo de categoria que será importada, através da Interface criada para os objetos.
     },
-    components: { Tag }
+    components: { Tag , IngredienteSelecionado}
 }
 </script>
 
@@ -21,7 +21,7 @@ export default {
         </header>
         <ul class="categoria__ingredientes">
             <li v-for="ingrediente in categoria.ingredientes" :key="ingrediente">
-                <Tag :texto="ingrediente"/>
+                <IngredienteSelecionado :ingrediente="ingrediente"/>
             </li>
         </ul>
     </article>
