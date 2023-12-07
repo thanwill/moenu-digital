@@ -10,7 +10,7 @@ export default {
             // define o tipo de categoria que será importada, através da Interface criada para os objetos.
     },
     components: { Tag , IngredienteSelecionado},
-    emits: ['adicionarIngrediente']
+    emits: ['adicionarIngrediente', 'removerIngrediente']
 }
 </script>
 
@@ -25,6 +25,7 @@ export default {
                 <IngredienteSelecionado 
                 :ingrediente="ingrediente"
                 @adicionar-ingrediente="$emit('adicionarIngrediente', $event)"
+                @remover-ingrediente="$emit('removerIngrediente', $event)"
                 
                 />
             </li>

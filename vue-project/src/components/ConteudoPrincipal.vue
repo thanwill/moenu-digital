@@ -2,31 +2,38 @@
 import SelecionarIngredientes from './SelecionarIngredientes.vue'
 import Tag from '@/components/Tag.vue'
 import SuaLista from '@/components/SuaLista.vue'
+import BotaoPrincipal from '@/components/BotaoPrincipal.vue'
 import type { PropType } from 'vue'
 export default {
     name: "ConteudoPrincipal",
-    components: { SelecionarIngredientes, Tag, SuaLista },
+    components: { SelecionarIngredientes, Tag, SuaLista , BotaoPrincipal},
     data() {
         return {
             ingredientes: [] as string[]
         }
     },
-    methods:{
-        adicionarIngredientes(ingrediente:string){
+    methods: {
+        adicionarIngrediente(ingrediente: string) {
             this.ingredientes.push(ingrediente)
+        },
+        removerIngrediente(ingrediente: string) {
+
+            // cria uma variável que recebe o índice do ingrediente que será removido 
+            const indice = this.ingredientes.indexOf(ingrediente)
+
+            // remove o ingrediente do array 
+            this.ingredientes.splice(indice, 1)
         }
     },
-    emits: ['adicionarIngrediente']
+    emits: ['adicionarIngrediente', 'removerIngrediente']
 }
 </script>
 
 <template>
     <main class="conteudo-principal">
         <SuaLista :ingredientes="ingredientes" />
-        <SelecionarIngredientes 
-        @adicionar-ingrediente="adicionarIngredientes"
-        
-        />
+        <SelecionarIngredientes @adicionar-ingrediente="adicionarIngrediente" @remover-ingrediente="removerIngrediente" />
+        <BotaoPrincipal :message="'Buscar receitas!'" />
     </main>
 </template>
 
