@@ -5,12 +5,20 @@ import { ref } from 'vue'
 import { obterReceitas } from '@/services/index'
 import type IReceita from '@/interface/IReceita'
 import CardReceitas from './CardReceitas.vue'
+import { itensDeLista1EstaoEmLista2 } from '../utils/listas'
 
-
-const receitas = ref([] as IReceita[])
+const receitasEncontradas = ref([] as IReceita[])
 
 async function buscarReceitas() {
-    receitas.value = await obterReceitas()
+    const receitas  = await obterReceitas()
+    const ingredientes = ref([] as string[])
+
+    receitasEncontradas.value = receitas.filter((receita) => {
+        
+        const possoFazerReceitas = itensDeLista1EstaoEmLista2(receita.ingredientes, ingredientes.value)
+
+        return possoFazerReceitas
+    })
 }
 buscarReceitas()
 
@@ -22,16 +30,16 @@ buscarReceitas()
         <h1 class="cabecalho titulo-receitas">Receitas</h1>
 
         <p class="paragrafo-lg resultados-encontrados">
-            Resultados encontrados: {{ receitas.length }}
+            Resultados encontrados: {{ receitasEncontradas.length }}
         </p>
 
-        <div v-if="receitas.length" class="receitas-wrapper">
+        <div v-if="receitasEncontradas.length" class="receitas-wrapper">
             <p class="paragrafo-lg informacoes">
                 Veja as opções de receitas que encontramos com os ingredientes que você tem por aí!
             </p>
 
             <ul class="receitas">
-                <li v-for="receita of receitas" :key="receita.nome">
+                <li v-for="receita of receitasEncontradas" :key="receita.nome">
                     <CardReceitas :receita="receita" />
                 </li>
             </ul>
