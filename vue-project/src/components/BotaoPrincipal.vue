@@ -10,13 +10,14 @@ export default {
 
 </script>
 <template>
-    <button class="botao">
+    <button class="paragrafo-lg botao-principal">
         {{ message }}
     </button>
 </template>
 
 <style scoped>
-.botao {
+.botao-principal {
+
     display: flex;
     width: 312px;
     height: 56px;
@@ -38,5 +39,8 @@ export default {
     font-weight: 700;
     line-height: 150%;
     /* 33px */
+
+    cursor: pointer;
+    transition: filter 0.2s;
 }
 </style>

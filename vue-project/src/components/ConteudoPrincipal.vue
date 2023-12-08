@@ -1,14 +1,14 @@
 <script setup lang="ts">
+
 import { ref } from 'vue'
 import SelecionarIngredientes from './SelecionarIngredientes.vue'
-import Tag from '@/components/Tag.vue'
 import SuaLista from '@/components/SuaLista.vue'
-import BotaoPrincipal from '@/components/BotaoPrincipal.vue'
 import Rodape from '@/components/Rodape.vue'
+import MostarReceitas from '@/components/MostrarReceitas.vue'
 
+type Pagina = 'SelecionarIngredientes' | 'MostrarReceitas'
 const ingredientes = ref([] as string[])
-
-
+var conteudo = ref<Pagina>('SelecionarIngredientes')
 
 function adicionarIngrediente(ingrediente: string) {
     ingredientes.value.push(ingrediente)
@@ -22,14 +22,29 @@ function removerIngrediente(ingrediente: string) {
     ingredientes.value.splice(indice, 1)
 }
 
+function buscarReceitas() {
+    conteudo.value = 'MostrarReceitas'
+}
+
+function navegar(pagina : Pagina) {
+    conteudo.value = pagina
+}
+
+
 </script>
 
 <template>
     <main class="conteudo-principal">
         <SuaLista :ingredientes="ingredientes" />
-        <SelecionarIngredientes @adicionar-ingrediente="adicionarIngrediente" @remover-ingrediente="removerIngrediente" />
-        <BotaoPrincipal :message="'Buscar receitas!'" />
+        <SelecionarIngredientes 
+            v-if="conteudo === 'SelecionarIngredientes'"
+            @adicionar-ingrediente="adicionarIngrediente"
+            @remover-ingrediente="removerIngrediente" 
+            @buscar-receitas="navegar('MostrarReceitas')"/>
 
+        <MostarReceitas 
+            v-else-if="conteudo === 'MostrarReceitas'"  
+            @buscar-receitas="navegar('SelecionarIngredientes')"/>
     </main>
     <Rodape />
 </template>

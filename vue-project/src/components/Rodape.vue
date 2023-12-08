@@ -1,9 +1,6 @@
 <template>
     <footer class="rodape paragrafo">
-        <p>Recriado com <span class="coracao">❤</span> por <a href="https://br.linkedin.com/in/jonathanwilliam"
-                target="_blank">Jonathan William</a>
-            <br>Desenvolvido por Alura | 2023 - Projeto fictício sem fins comerciais.
-        </p>
+        <p>Desenvolvido por Alura | 2023 - Projeto fictício sem fins comerciais.</p>
     </footer>
 </template>
   
