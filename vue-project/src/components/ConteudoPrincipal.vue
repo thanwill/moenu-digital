@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import { ref } from 'vue'
+import { KeepAlive, ref } from 'vue'
 import SelecionarIngredientes from './SelecionarIngredientes.vue'
 import SuaLista from '@/components/SuaLista.vue'
 import Rodape from '@/components/Rodape.vue'
@@ -18,7 +18,7 @@ function removerIngrediente(ingrediente: string) {
     ingredientes.value.splice(indice, 1)
 }
 
-function navegar(pagina : Pagina) {
+function navegar(pagina: Pagina) {
     conteudo.value = pagina
 }
 
@@ -28,15 +28,14 @@ function navegar(pagina : Pagina) {
 <template>
     <main class="conteudo-principal">
         <SuaLista :ingredientes="ingredientes" />
-        <SelecionarIngredientes 
-            v-if="conteudo === 'SelecionarIngredientes'"
-            @adicionar-ingrediente="adicionarIngrediente"
-            @remover-ingrediente="removerIngrediente" 
-            @buscar-receitas="navegar('MostrarReceitas')"/>
+        <KeepAlive>
+            <SelecionarIngredientes v-if="conteudo === 'SelecionarIngredientes'"
+                @adicionar-ingrediente="adicionarIngrediente" @remover-ingrediente="removerIngrediente"
+                @buscar-receitas="navegar('MostrarReceitas')" />
 
-        <MostarReceitas 
-            v-else-if="conteudo === 'MostrarReceitas'"  
-            @buscar-receitas="navegar('SelecionarIngredientes')"/>
+            <MostarReceitas v-else-if="conteudo === 'MostrarReceitas'"
+                @buscar-receitas="navegar('SelecionarIngredientes')" />
+        </KeepAlive>
     </main>
     <Rodape />
 </template>
