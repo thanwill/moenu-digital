@@ -8,17 +8,13 @@ import MostarReceitas from '@/components/MostrarReceitas.vue'
 
 type Pagina = 'SelecionarIngredientes' | 'MostrarReceitas'
 const ingredientes = ref([] as string[])
-var conteudo = ref<Pagina>('SelecionarIngredientes')
+var conteudo = ref<Pagina>('MostrarReceitas')
 
 function adicionarIngrediente(ingrediente: string) {
     ingredientes.value.push(ingrediente)
 }
 function removerIngrediente(ingrediente: string) {
-
-    // cria uma variável que recebe o índice do ingrediente que será removido 
     const indice = ingredientes.value.indexOf(ingrediente)
-
-    // remove o ingrediente do array 
     ingredientes.value.splice(indice, 1)
 }
 
