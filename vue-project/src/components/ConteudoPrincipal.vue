@@ -22,10 +22,6 @@ function removerIngrediente(ingrediente: string) {
     ingredientes.value.splice(indice, 1)
 }
 
-function buscarReceitas() {
-    conteudo.value = 'MostrarReceitas'
-}
-
 function navegar(pagina : Pagina) {
     conteudo.value = pagina
 }

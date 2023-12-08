@@ -13,8 +13,7 @@ export default {
     };
   },
   async created() {
-    // é executado depois das configurações
-    // método do ciclo de vida, executado depois que as propriedades do data forem definidas
+    
     this.categorias = await obterCategorias();
   },
   components: { CardCategoria, BotaoPrincipal },
